@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "968ca4ba-9032-4369-8093-4896ffc98872",
+		"name": "Mars Rover Mission",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "To Land",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicle_type\": 1,\n    \"coordinate_x\": 10,\n    \"coordinate_y\": 10,\n    \"orientation\": \"N\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehicles/landing",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicles",
+								"landing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movement_sequence\": \"FFRRFFFRL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/vehicles/c99d66d0-c522-4075-a982-76a1f784abcd/move",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicles",
+								"c99d66d0-c522-4075-a982-76a1f784abcd",
+								"move"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

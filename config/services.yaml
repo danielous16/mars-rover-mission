@@ -1,0 +1,28 @@
+parameters:
+
+services:
+
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    _instanceof:
+        MarsRoverMission\App\Shared\Application\Command\CommandHandlerInterface:
+            public: true
+            tags: [{ name: messenger.message_handler, bus: mrm.messenger.bus.command }]
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    MarsRoverMission\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    MarsRoverMission\UI\Http\Controller\:
+        resource: '../src/UI/Http/Controller/*'
+        tags: [ 'controller.service_arguments' ]
+
+    mrm.app.shared.command_bus:
+        class: MarsRoverMission\App\Shared\Infrastructure\Bus\MessengerCommandBus
+        public: true
+        arguments:
+            - '@mrm.messenger.bus.command'

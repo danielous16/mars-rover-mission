@@ -1,0 +1,9 @@
+#VEHICLE
+ToLand:
+    path: /vehicles/landing
+    controller: MarsRoverMission\UI\Http\Controller\Vehicle\LandingController
+    methods: POST
+Move:
+    path: /vehicles/{id}/move
+    controller: MarsRoverMission\UI\Http\Controller\Vehicle\MoveController
+    methods: PUT

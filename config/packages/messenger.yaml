@@ -1,0 +1,20 @@
+framework:
+    messenger:
+        default_bus: mrm.messenger.bus.command
+
+        buses:
+            mrm.messenger.bus.command:
+                default_middleware: false
+                middleware:
+                    - handle_message
+        failure_transport: failed
+        transports:
+            failed:
+                dsn: doctrine://master
+                options:
+                    table_name: mrm_messages_failed
+                    queue_name: failed
+                    auto_setup: true
+                    redeliver_timeout: 3600
+        routing:
+        serializer:
