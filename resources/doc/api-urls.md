@@ -1,14 +1,13 @@
 # Api Urls available
 
-# Api
-##Landing a Vechicle
+## Landing a Vechicle
 ```
 POST
 http://localhost:8008/vehicles/landing
 ```
 VehicleTypes:
 - Rover => 1
-######Request payload:
+###### Request payload:
 ```json
 {
     "vehicle_type": 1,
@@ -18,7 +17,7 @@ VehicleTypes:
 }
 ```
 
-######Response:
+###### Response:
 The endpoint returns:
 - HTTP code: 201 Created
 - Response body with the new landed vehicle identifier:
@@ -28,7 +27,7 @@ The endpoint returns:
 }
 ```
 
-##Move a Vechicle
+## Move a Vechicle
 This endpoint processes the sequence of movements received and moves the vehicle validating that it does not collide with the limits of the Planet.
 ```
 POST
@@ -37,14 +36,14 @@ http://localhost:8008/vehicles/{vehicleId}/move
 Example:
 http://localhost:8080/vehicles/c99d66d0-c522-4075-a982-76a1f784abcd/move
 ```
-######Request payload:
+###### Request payload:
 ```json
 {
     "movement_sequence": "FFRRFFFRL"
 }
 ```
 
-######Response:
+###### Response:
 The endpoint returns:
 - HTTP code: 200 OK
 - Response body with the results of process the sequence of movements received:
@@ -57,15 +56,15 @@ The endpoint returns:
 }
 ```
 
-####Collision example
+#### Collision example
 Example of a response when the vehicle collides and is not able to process part of the sequence of movements
-######Request:
+###### Request:
 ```json
 {
     "movement_sequence": "RFFFFFFFFFFLFFF"
 }
 ```
-######Response:
+###### Response:
 The endpoint returns:
 - HTTP code: 200 OK
 - Response body contains the processed and unprocessed movements, indicating the coordinates where the collision occurs:
